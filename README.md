@@ -17,14 +17,6 @@
 Scrap any content on any website that has a search bar (using [Puppeteer](https://github.com/puppeteer/puppeteer)).
 
 
-[Explore the docs »](https://github.com/ownw/web-search-scrap)
-
-[View Demo](https://github.com/ownw/web-search-scrap)
-·
-[Report Bug](https://github.com/ownw/web-search-scrap/issues)
-·
-[Request Feature](https://github.com/ownw/web-search-scrap/issues)
-
 <!--
  <-- TABLE OF CONTENTS 
 ## Table of Contents
@@ -86,15 +78,16 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
     $ npm install npm -g
 
 ## Install
+This will install all dependencies.
 
-    $ npm install @ownw/web-search-scrap
+    $ npm install path/to/directory
     
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 The module has the following functions:
 
-    const {scrap, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@ownw/web-search-scrap');
+    const {scrap, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@otodo/web-search-scrap');
     _______________
     
     scrap(toSearchFor:string|string[], pagesToScrap:...PageToScrap): AsyncGenerator<Object>
@@ -107,7 +100,7 @@ The module has the following functions:
 
 Your main file could look like this:
     
-    const {scrap, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@ownw/web-search-scrap');
+    const {scrap, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@otodo/web-search-scrap');
      
     pagesToScrap(path.join(__dirname, 'pageToScrap')).then(async pages => {
          const pathFile = path.join('results', nameFile('json', "search1"));
@@ -121,7 +114,7 @@ Your main file could look like this:
 
 You can also directly use the results generated:
 
-    const {scrap} = require('@ownw/web-search-scrap');
+    const {scrap} = require('@otodo/web-search-scrap');
     const targetWebsite = ...;
     
     const asyncFn = async () => {
@@ -137,7 +130,7 @@ The files loaded by the function _pagesToScrap(directory path)_ need to have the
     {
         "name": ...,
         "url": ...,
-        "searchBarId": ...,
+        "searchBarSelector": ...,
         "xpathResults": [...],
         "xpathPagination": {"next": ...},
         "disableIntercept": true/false,
@@ -165,7 +158,7 @@ For example if the targeted website is amazon, the following values are suggeste
     {
       "name": "amazon",
       "url": "https://www.amazon.com",
-      "searchBarId": "#twotabsearchtextbox",
+      "searchBarSelector": "#twotabsearchtextbox",
       "xpathResults": [
         "//*[@data-component-type='s-search-result']//a[not(contains(@href, '#customerReviews') or contains(@href, 'javascript') or contains(@href, 'offer-listing') or contains(@href, 'bestsellers'))]"
       ],
@@ -234,7 +227,7 @@ To search on Google, use:
     {
       "name": "google",
       "url": "https://www.google.com/",
-      "searchBarId": "input.gLFyf.gsfi",
+      "searchBarSelector": "input.gLFyf.gsfi",
       "xpathResults": [
         ".//*[contains(@href, 'https://webcache.googleusercontent.com/search')]"
       ],
@@ -260,12 +253,12 @@ with
 
     scrap("text site:targetedWebsite.com", page['google'])
 
-_For more examples, please refer to the [Documentation](https://github.com/ownw/web-search-scrap)_
+_For more examples, please refer to the [Documentation](https://github.com/)_
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/ownw/web-search-scrap/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/) for a list of proposed features (and known issues).
 
 
 
@@ -285,29 +278,23 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
 
 <!-- CONTACT -->
 ## Contact
 
-Project Link: 
-* [github](https://github.com/ownw/web-search-scrap)
-* [npmjs](https://www.npmjs.com/package/@ownw/web-search-scrap)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/ownw/web-search-scrap.svg?style=flat-square
-[contributors-url]: https://github.com/ownw/web-search-scrap/contributors
-[forks-shield]: https://img.shields.io/github/forks/ownw/web-search-scrap.svg?style=flat-square
-[forks-url]: https://github.com/ownw/web-search-scrap/network/members
-[stars-shield]: https://img.shields.io/github/stars/ownw/web-search-scrap.svg?style=flat-square
-[stars-url]: https://github.com/ownw/web-search-scrap/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ownw/web-search-scrap.svg?style=flat-square
-[issues-url]: https://github.com/ownw/web-search-scrap/issues
-[license-shield]: https://img.shields.io/github/license/ownw/web-search-scrap.svg?style=flat-square
-[license-url]: https://github.com/ownw/web-search-scrap/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/
+[contributors-url]: https://github.com/
+[forks-shield]: https://img.shields.io/github/forks/
+[forks-url]: https://github.com/
+[stars-shield]: https://img.shields.io/github/stars/
+[stars-url]: https://github.com/
+[issues-shield]: https://img.shields.io/github/issues/
+[issues-url]: https://github.com/
+[license-shield]: https://img.shields.io/github/license/
+[license-url]: https://github.com/
 
 [product-screenshot]: public/images/screenshot.png
 [mockup1]: images/mockup1.png

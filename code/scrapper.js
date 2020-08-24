@@ -98,25 +98,25 @@ const scrap = async function*(toSearchFor, ...pagesToScrap){
 
         /**
          * lance une recherche sur le site concerné et se déplace vers la page de résultats
-         * @type {function(sp: Page, {url: string, searchBarId: string, text: string}):Promise<Page>}
+         * @type {function(sp: Page, {url: string, searchBarSelector: string, text: string}):Promise<Page>}
          */
-        const launchSearch = async (sp, {url, searchBarId, text}) => {
+        const launchSearch = async (sp, {url, searchBarSelector, text}) => {
             try {
                 await sp.goto(url, {waitUntil: "networkidle2"});
-                await sp.type(searchBarId, text);
+                await sp.type(searchBarSelector, text);
                 await sp.keyboard.press('Enter');
                 await sp.waitForNavigation({waitUntil: "networkidle2"});
                 return sp;
             } catch (e) {
-                log.error({msg: e.msg, url: url, searchBarId: searchBarId, text: text});
+                log.error({msg: e.msg, url: url, searchBarSelector: searchBarSelector, text: text});
                 log.error(e);
                 await delay(5000);
-                return launchSearch(sp, {url, searchBarId, text});
+                return launchSearch(sp, {url, searchBarSelector, text});
             }
         };
         const searchPage = await launchSearch(p, {
             "url": page.url,
-            "searchBarId": page.searchBarId,
+            "searchBarSelector": page.searchBarSelector,
             "text": t
         })
         log.info({searchPage: searchPage.url()});
