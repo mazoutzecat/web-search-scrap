@@ -80,14 +80,14 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 ## Install
 This will install all dependencies.
 
-    $ npm install path/to/directory
+    $ npm install (path/to/directory)
     
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 The module has the following functions:
 
-    const {scrap, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@otodo/web-search-scrap');
+    const {scrap, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@ownw/web-search-scrap');
     _______________
     
     scrap(toSearchFor:string|string[], pagesToScrap:...PageToScrap): AsyncGenerator<Object>
@@ -100,7 +100,7 @@ The module has the following functions:
 
 Your main file could look like this:
     
-    const {scrap, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@otodo/web-search-scrap');
+    const {scrap, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@ownw/web-search-scrap');
      
     pagesToScrap(path.join(__dirname, 'pageToScrap')).then(async pages => {
          const pathFile = path.join('results', nameFile('json', "search1"));
@@ -114,7 +114,7 @@ Your main file could look like this:
 
 You can also directly use the results generated:
 
-    const {scrap} = require('@otodo/web-search-scrap');
+    const {scrap} = require('@ownw/web-search-scrap');
     const targetWebsite = ...;
     
     const asyncFn = async () => {
@@ -132,7 +132,10 @@ The files loaded by the function _pagesToScrap(directory path)_ need to have the
         "url": ...,
         "searchBarSelector": ...,
         "xpathResults": [...],
-        "xpathPagination": {"next": ...},
+        "xpathPagination": {
+            "next": ...,
+            "clickOnLink": true/false
+        },
         "disableIntercept": true/false,
         "delayStrategy": {
             "nbUrlPerChunk": ...,
@@ -163,7 +166,8 @@ For example if the targeted website is amazon, the following values are suggeste
         "//*[@data-component-type='s-search-result']//a[not(contains(@href, '#customerReviews') or contains(@href, 'javascript') or contains(@href, 'offer-listing') or contains(@href, 'bestsellers'))]"
       ],
       "xpathPagination" : {
-        "next": "//ul[@class='a-pagination']//li[@class='a-last']//a"
+        "next": "//ul[@class='a-pagination']//li[@class='a-last']//a",
+        "clickOnLink": false
       },
       "disableIntercept": true,
       "delayStrategy": {
@@ -193,7 +197,6 @@ For example if the targeted website is amazon, the following values are suggeste
         "maxTries": 5
       }
     }
-
 
 This will yield the results (depending on the text searched):
 (Note you can get at most 350 results per search on Amazon)
@@ -285,16 +288,16 @@ Contributions are what make the open source community such an amazing place to b
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/
-[contributors-url]: https://github.com/
-[forks-shield]: https://img.shields.io/github/forks/
-[forks-url]: https://github.com/
-[stars-shield]: https://img.shields.io/github/stars/
-[stars-url]: https://github.com/
-[issues-shield]: https://img.shields.io/github/issues/
-[issues-url]: https://github.com/
-[license-shield]: https://img.shields.io/github/license/
-[license-url]: https://github.com/
+[contributors-shield]: https://img.shields.io/github/contributors/ownw/web-search-scrap
+[contributors-url]: https://github.com/ownw/web-search-scrap/contributors
+[forks-shield]: https://img.shields.io/github/forks/ownw/web-search-scrap.svg
+[forks-url]: https://github.com/ownw/web-search-scrap/network/members
+[stars-shield]: https://img.shields.io/github/stars/ownw/web-search-scrap.svg
+[stars-url]: https://github.com/ownw/web-search-scrap/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ownw/web-search-scrap.svg
+[issues-url]: https://github.com/ownw/web-search-scrap/issues
+[license-shield]: https://img.shields.io/github/license/ownw/web-search-scrap.svg
+[license-url]: https://github.com/ownw/web-search-scrap/blob/master/LICENCE
 
 [product-screenshot]: public/images/screenshot.png
 [mockup1]: images/mockup1.png
