@@ -9,9 +9,9 @@ const moment = require("moment");
  * //returns 20200820_100030_test1_test2.json
  * nameFile('json', 'test1', 'test2');
  */
-const nameFile = (ext, ...names) => {
+const nameFile = (...names) => {
     const date = moment().format("YYYYMMMDD_HHmmss");
-    return encodeURI([date, ...names].join('_') + '.' + ext);
+    return encodeURI([date, ...names].join('_'));
 }
 
 

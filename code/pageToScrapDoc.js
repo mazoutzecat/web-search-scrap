@@ -14,6 +14,7 @@
 /**
  * @typedef {Object} Pagination
  * @property {string} next
+ * @property {boolean} clickOnLink
  */
 
 /**
