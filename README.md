@@ -87,10 +87,12 @@ This will install all dependencies.
 
 The module has the following functions:
 
-    const {scrap, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@ownw/web-search-scrap');
+    const {scrap, browserOptions, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@ownw/web-search-scrap');
     _______________
     
     scrap(toSearchFor:string|string[], pagesToScrap:...PageToScrap): AsyncGenerator<Object>
+    
+    browserOptions: Object
     
     saveJsonAsyncGenerator(fileName:string, gens:...AsyncGenerator): Promise<void>
     
@@ -102,8 +104,11 @@ Your main file could look like this:
     
     const {scrap, saveJsonAsyncGenerator, pagesToScrap, nameFile} = require('@ownw/web-search-scrap');
      
+    //first load the files descripting the targeted website(s)
     pagesToScrap(path.join(__dirname, 'pageToScrap')).then(async pages => {
+         //create a file to save the results
          const pathFile = path.join('results', nameFile('json', "search1"));
+         //call the function taking care of saving the results with the 'scrap' function as parameter.
          await saveJsonAsyncGenerator(pathFile, scrap(["text to search", "other text to search"], pages['target1']));
         
          const pathFile2 = path.join('results', nameFile('json', "search2"));
