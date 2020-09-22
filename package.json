@@ -1,6 +1,6 @@
 {
-  "name": "@otodo/web-search-scrap",
-  "version": "0.1.4",
+  "name": "@ownw/web-search-scrap",
+  "version": "0.1.5",
   "description": "Scrap any content on any website that has a search bar.",
   "main": "index.js",
   "scripts": {
